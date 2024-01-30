@@ -1,0 +1,76 @@
+{
+  "name": "review-service",
+  "version": "1.0.0",
+  "description": "Products review service",
+  "engines": {
+    "npm": ">=8.3.0",
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/erozonachi/review-service.git"
+  },
+  "keywords": [
+    "product",
+    "reviews"
+  ],
+  "author": "James Eneh",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/erozonachi/review-service/issues"
+  },
+  "homepage": "https://github.com/erozonachi/review-service#readme",
+  "scripts": {
+    "dev": "TZ=UTC ts-node-dev --no-notify --inspect=:9254 -- src/server.ts",
+    "start": "TZ=UTC node build/server.js",
+    "build": "ttsc",
+    "seed:db": "TZ=UTC ts-node scripts/seed-db.ts",
+    "test": "NODE_ENV=test TZ=UTC jest --passWithNoTests",
+    "lint": "eslint \"**/*.{ts,js}\"",
+    "format": "prettier --write \"**/*.{ts,js,json,graphql,gql,yaml,yml,md}\"",
+    "format:file": "prettier --write",
+    "format:check": "prettier --check \"**/*.{ts,js,json,graphql,gql,yaml,yml,md}\"",
+    "typecheck": "tsc -p ./tsconfig.json"
+  },
+  "dependencies": {
+    "@apollo/server": "^4.10.0",
+    "@as-integrations/fastify": "^2.1.1",
+    "@fastify/cors": "^8.4.0",
+    "bson": "^6.0.0",
+    "config-dug": "^1.7.2",
+    "dotenv": "^16.3.1",
+    "fastify": "^4.23.2",
+    "graphql": "^16.8.1",
+    "lodash": "^4.17.21",
+    "mongodb-uri": "^0.9.7",
+    "mongoose": "^7.5.3",
+    "readline-sync": "^1.4.10",
+    "reflect-metadata": "^0.1.13",
+    "tsyringe": "^4.8.0",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "@shelf/jest-mongodb": "^4.1.7",
+    "@types/lodash": "^4.14.202",
+    "@types/mongodb-uri": "^0.9.2",
+    "@types/node": "^16.18.46",
+    "@types/readline-sync": "^1.4.8",
+    "@types/uuid": "^9.0.4",
+    "@typescript-eslint/eslint-plugin": "^6.7.4",
+    "@typescript-eslint/parser": "^6.7.4",
+    "eslint": "^8.50.0",
+    "eslint-config-neo": "^0.8.0",
+    "eslint-plugin-import": "^2.28.1",
+    "eslint-plugin-n": "^16.1.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "jest": "^29.7.0",
+    "jest-auto-stub": "^1.0.8",
+    "mongodb-memory-server-core": "^8.15.1",
+    "prettier": "^2.8.8",
+    "ts-jest": "^29.1.1",
+    "ts-node": "^8.10.2",
+    "ts-node-dev": "^2.0.0",
+    "ttypescript": "^1.5.15",
+    "typescript": "^4.9.5"
+  }
+}
