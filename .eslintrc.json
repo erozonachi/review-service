@@ -1,0 +1,86 @@
+{
+  "extends": "eslint-config-neo/config-backend",
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "parserOptions": {
+    "project": ["./tsconfig.json", "./test/tsconfig.json"]
+  },
+  "rules": {
+    "jest": "off",
+    "jest/no-commented-out-tests": "off",
+    "jest/no-deprecated-functions": "off",
+    "jest/valid-expect": "off",
+    "jest/valid-expect-in-promise": "off",
+    "@typescript-eslint/no-empty-interface": "off",
+    "@typescript-eslint/no-floating-promises": [
+      "error",
+      {
+        "ignoreIIFE": true
+      }
+    ],
+    "import/no-restricted-paths": [
+      "error",
+      {
+        "zones": [
+          {
+            "target": "./src/domain",
+            "from": "./src/infrastructure",
+            "message": "Hex: domain layer cannot know about the infrastructure layer"
+          },
+          {
+            "target": "./src/domain",
+            "from": "./src/configuration",
+            "message": "Hex: domain layer cannot know about the configuration layer"
+          },
+          {
+            "target": "./src/domain",
+            "from": "./src/application",
+            "message": "Hex: domain layer cannot know about the application layer"
+          },
+          {
+            "target": "./src/infrastructure",
+            "from": "./src/application",
+            "message": "Hex: infrastructure layer cannot know about the application layer"
+          },
+          {
+            "target": "./src/application",
+            "from": "./src/infrastructure",
+            "message": "Hex: application layer cannot know about the infrastructure layer"
+          },
+          {
+            "target": "./test/domain",
+            "from": "./src/infrastructure",
+            "message": "Hex: domain layer cannot know about the infrastructure layer, even in tests"
+          },
+          {
+            "target": "./test/domain",
+            "from": "./src/configuration",
+            "message": "Hex: domain layer cannot know about the configuration layer, even in tests"
+          },
+          {
+            "target": "./test/domain",
+            "from": "./src/application",
+            "message": "Hex: domain layer cannot know about the application layer, even in tests"
+          },
+          {
+            "target": "./test/infrastructure",
+            "from": "./src/application",
+            "message": "Hex: infrastructure layer cannot know about the application layer, even in tests"
+          },
+          {
+            "target": "./test/application",
+            "from": "./test/infrastructure",
+            "message": "Hex: application layer cannot know about the infrastructure layer, even in tests"
+          }
+        ]
+      }
+    ]
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".ts"]
+      }
+    }
+  }
+}
